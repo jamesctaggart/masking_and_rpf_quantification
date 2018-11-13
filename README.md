@@ -10,6 +10,7 @@ The included scripts will take a fasta-formatted genome and GTF2-formatted annot
 We mask against the transcriptome rather than the genome to both accelerate the runtime of mask generation and ensure correct masking near splice junctions. The simpler but slower workflow which masks the genome instead of transcriptome is available through the [crossmap function](https://plastid.readthedocs.io/en/latest/examples/using_masks.html) of plastid.
 
 The workflow used here to generate a mask is as follows:
+
 First, filter the GTF2-formatted annotation file using `prefilter_annotation_file.py`. This script can be run without the `--remove_overlaps` flag to preserve genes which share overlapping coding sequence. An example call might look like: 
 ```
 python prefilter_annotation_file.py\
@@ -33,7 +34,7 @@ python prefilter_genome.py --annotation_file $FILTERED_ANNOTATION\
 
 From this filtered genome, build a bowtie1 index for use in mask generation. You can then run `crossmap_tophat.py` to generate a mask file from your filtered genome and annotation. To reduce run time, annotation file can be provided as both an extended BED file (used in making k-mers) and a GTF2 file (required for tophat mapping of k-mers). This mask will be specific to the transcriptome assembly you provide. The number of allowed mismatches is specified with `--mismatches`, and `--offset` must match the offset applied to mapped read positions used in downstream quantification (13 nt by default for included scripts) An example call:
 ```
-python crossmap_tophat.py -k 27 --mismatches 1 --offset 13 --processes 2 --sequence_format fasta\
+python crossmap_tophat.py -k 27 --mismatches 1 --offset 13 --processes 1 --sequence_format fasta\
  --sequence_file $FILTERED_GENOME_FASTA\
   --bed_file $ANNOTATION_BED_FILE\
    --annotation_files $ANNOTATION_GTF_FILE\
