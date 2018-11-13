@@ -51,7 +51,7 @@ To quantify synthesis, run `quantify_bam.py`. By default, this script considers 
 
 This script will import the mask and data from the BAM file (with mask file specified by the `--mask_file` flag), extract the common exons for all isoforms from each gene, calculate a metagene correction from the data, and subsequently calculate masked, metagene-corrected read density for each gene.
 
-An a quantification call might look as follows:
+An example quantification call might look as follows:
 ```
 python quantification/quantify_bam.py --trim5 15 --trim3 15 \
 --annotation_files $ANNOTATION_BED\
