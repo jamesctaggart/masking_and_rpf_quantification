@@ -1,4 +1,4 @@
-# Masking and quantification from Taggart et al. 2018, Cell Systems
+# Masking and quantification of ribosome profiling data
 
 Scripts used for quantification of protein synthesis from a ribosome profiling dataset.
 Included Python scripts allow for 1. the generation of a mask file against a transcriptome to avoid counting multimapping reads and 2. quantification of protein synthesis from each gene using this mask
