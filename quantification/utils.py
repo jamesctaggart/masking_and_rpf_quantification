@@ -34,6 +34,18 @@ def get_common_exons(transcript_list):
             out.add_segments(seg)
     return out  # Returns SegmentChain containing just the exons common to transcripts
 
+def identical_cds(sc1,sc2):
+    """
+    Given two SegmentChain objects, return True if they share an identical CDS.
+    :param sc1:
+    :param sc2:
+    :return:
+    """
+    # Input 2 identical segment chains, return True if cds the same
+    if sc1.covers(sc2) and sc2.covers(sc1):
+        return True
+    else:
+        return False
 
 def has_different_coding_regions(transcript_list):
     """
